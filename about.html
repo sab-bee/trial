@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card-wraper">
+        <div class="card_1 card">
+          <div class="left_1 left"></div>
+          <div class="right">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde in
+            minima consequuntur molestiae molestias. Dolores, ipsam! Officiis
+            quibusdam perspiciatis obcaecati facilis, eaque incidunt, ducimus
+            modi numquam sunt voluptatum itaque enim. Beatae amet accusantium
+            reiciendis, voluptates explicabo quisquam id eligendi nam voluptas.
+            Doloribus temporibus numquam, aliquam beatae corrupti qui atque
+            accusamus!
+          </div>
+        </div>
+      </div>
+      <div class="card-wraper">
+        <div class="card_2 card">
+          <div class="left_2 left"></div>
+          <div class="right">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde in
+            minima consequuntur molestiae molestias. Dolores, ipsam! Officiis
+            quibusdam perspiciatis obcaecati facilis, eaque incidunt, ducimus
+            modi numquam sunt voluptatum itaque enim. Beatae amet accusantium
+            reiciendis, voluptates explicabo quisquam id eligendi nam voluptas.
+            Doloribus temporibus numquam, aliquam beatae corrupti qui atque
+            accusamus!
+          </div>
+        </div>
+      </div>
+
+      <div class="card-wraper">
+        <div class="card_3 card">
+          <div class="left_3 left"></div>
+          <div class="right">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde in
+            minima consequuntur molestiae molestias. Dolores, ipsam! Officiis
+            quibusdam perspiciatis obcaecati facilis, eaque incidunt, ducimus
+            modi numquam sunt voluptatum itaque enim. Beatae amet accusantium
+            reiciendis, voluptates explicabo quisquam id eligendi nam voluptas.
+            Doloribus temporibus numquam, aliquam beatae corrupti qui atque
+            accusamus!
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600&display=swap");
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'open sans';
+  }
+
+  body {
+    height: 500vh;
+    overflow-x: hidden;
+  }
+
+  .card-wraper {
+    height: 100vh;
+  }
+  .card {
+    height: 60vh;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+
+  .card-wraper:nth-child(1) {
+    background: rgb(124, 203, 255);
+  }
+  .card-wraper:nth-child(2) {
+    background: rgb(255, 166, 166);
+  }
+  .card-wraper:nth-child(3) {
+    background: rgb(156, 252, 255);
+  }
+
+  .left {
+    position: sticky;
+    top: 0;
+    width: 200px;
+    height: 200px;
+  }
+
+  .left_1 {
+    background: rgb(60, 177, 255);
+  }
+  .left_2 {
+    background: rgb(247, 106, 87);
+  }
+  .left_3 {
+    background: rgb(9, 209, 199);
+  }
+
+  .right {
+    width: 50%;
+    font-size: 2.5rem;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+<script>
+  const lenis = new Lenis({
+    duration: 1.5,
+    // smoothWheel: true,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+</script>

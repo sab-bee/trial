@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<body>
+  <div class="container" id="container_1">
+    <div class="box"></div>
+  </div>
+  <div class="container" id="container_2">
+    <div class="box-2"></div>
+  </div>
+</body>
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&display=swap");
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 500vh;
+    overflow-x: hidden;
+  }
+
+  #container_1 {
+    width: 100%;
+    background: #363636;
+    height: 100vh;
+  }
+
+  #container_2 {
+    width: 100%;
+    background: #000000;
+    height: 100vh;
+  }
+
+  .box {
+    position: sticky;
+    top: 10rem;
+    width: 200px;
+    height: 200px;
+    background: blue;
+    transition: all;
+  }
+
+  .box-2 {
+    position: sticky;
+    top: 0;
+    width: 200px;
+    height: 200px;
+    background: rgb(0, 255, 13);
+    transition: all;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.19/bundled/lenis.min.js"></script>
+
+<script>
+  const lenis = new Lenis({
+    duration: 1.5,
+    // smoothWheel: true,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  const container_1 = document.getElementById("container_1");
+  const container_2 = document.getElementById("container_2");
+  const box = document.querySelector(".box");
+  const box_2 = document.querySelector(".box-2");
+
+  let scrub = 1;
+  // container_1.style.height = `${container_1.clientHeight * scrub}px`;
+  container_1.style.height = `${container_1.clientHeight * (scrub + 1)}px`;
+
+  document.addEventListener("scroll", () => {
+    let scrollAmount = window.scrollY / scrub;
+    box.style.transform = `translateX(${scrollAmount}px)`;
+
+    // if (val >= window.innerWidth - box.clientWidth * 2) {
+    //   container.style.overflow = "hidden";
+    // } else {
+    //   container.style.overflow = "unset";
+    // }
+  });
+</script>
